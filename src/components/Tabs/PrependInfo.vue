@@ -5,8 +5,10 @@ import TextTransition from '../TextTransition.vue'
 const alias = inject<string[]>('alias')!
 
 const snackbar = ref(false)
-const toWechat = () => {
+const toWechat = (open: boolean = true) => {
   navigator.clipboard.writeText('15178733891').then(() => {
+    if (open)
+      window.open('weixin://', '_self')
     snackbar.value = true
   })
 }
@@ -35,7 +37,7 @@ const toWechat = () => {
       <div class="d-flex ga-8 mt-8">
         <v-btn icon="mdi-github" href="https://github.com/liaoqinwei"></v-btn>
 
-        <v-snackbar v-model="snackbar"  :timeout="3000" timer color="transparent">
+        <v-snackbar v-model="snackbar" :timeout="3000" timer color="transparent">
           <v-alert text="复制成功！" class="alert-box pa-0" title="Alert title" type="success" variant="plain"></v-alert>
 
           <template v-slot:actions>
@@ -46,7 +48,7 @@ const toWechat = () => {
         </v-snackbar>
         <v-btn icon="mdi-wechat" @click="toWechat"></v-btn>
 
-        <v-btn icon="mdi-message-processing" @click="toWechat"></v-btn>
+        <v-btn icon="mdi-message-processing" @click="toWechat(false)"></v-btn>
       </div>
     </div>
   </v-sheet>

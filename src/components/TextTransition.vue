@@ -40,8 +40,7 @@ const animation = () => {
   }
 
   const start = () => {
-    animation = requestAnimationFrame(() => {
-      let now = Date.now()
+    let now = Date.now()
       clock += now - preTime
       preTime = now
 
@@ -50,10 +49,9 @@ const animation = () => {
         fn()
       }
 
-      start()
-    })
-
+    animation = requestAnimationFrame(start)
   }
+  
   return {
     start,
     stop

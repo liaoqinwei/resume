@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import {Tabs} from "./components/Tabs"
+import { Tabs } from "./components/Tabs"
+import Background from "./components/Background.vue";
+
 </script>
 
 <template>
   <div id="app">
+    <Background></Background>
     <Tabs></Tabs>
   </div>
 </template>
@@ -14,5 +17,6 @@ import {Tabs} from "./components/Tabs"
   height: 100vh;
   display: grid;
   place-content: center;
+  position: relative;
 }
 </style>
