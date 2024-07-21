@@ -1,4 +1,5 @@
 <script setup>
+// @ts-nocheck
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const render = (canvas) => {

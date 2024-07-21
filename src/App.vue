@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Tabs } from "./components/Tabs"
+// @ts-ignore
 import Background from "./components/Background.vue";
 
 </script>
