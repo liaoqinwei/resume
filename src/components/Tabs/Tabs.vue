@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, ref } from 'vue'
+import { ref } from 'vue'
 import Home from '../Panels/Home.vue'
 import PrependInfo from './PrependInfo.vue'
 import Profile from '../Panels/Profile.vue'
@@ -22,7 +22,7 @@ const tabWindowReverseTransition = ref(true)
 
     <v-card height="100%" class="main-area" :class="{ 'width-full': tab === 'home' }" flat>
       <div class="d-flex flex-row" style="height:100%;">
-        <v-tabs v-model="tab" color="primary" direction="vertical" class="elevation-4" style="z-index: 2;" >
+        <v-tabs v-model="tab" color="primary" direction="vertical" class="elevation-4" style="z-index: 2;">
           <v-tab value="home" :min-height="80">
             <template #default>
               <div class="d-flex flex-column align-center ga-2" style="width: 60px;">
@@ -33,7 +33,7 @@ const tabWindowReverseTransition = ref(true)
           <v-tab value="profile" :min-height="80">
             <template #default>
               <div class="d-flex flex-column align-center ga-2">
-                <v-icon icon="mdi-account" size="30"/>
+                <v-icon icon="mdi-account" size="30" />
                 <span>个人信息</span>
               </div>
             </template>
