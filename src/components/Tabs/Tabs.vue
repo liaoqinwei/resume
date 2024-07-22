@@ -18,12 +18,12 @@ provide('alias', alias)
 
 
 <template>
-  <v-sheet :height="700" :width="1200" :elevation="12" class="main-content-wrapper">
+  <v-sheet :height="700" :width="1200" rounded="lg" :elevation="12" class="main-content-wrapper">
     <PrependInfo></PrependInfo>
 
     <v-card height="100%" class="main-area" :class="{ 'width-full': tab === 'home' }" flat>
       <div class="d-flex flex-row" style="height:100%;">
-        <v-tabs v-model="tab" color="primary" direction="vertical" bg-color="#E5F6FD">
+        <v-tabs v-model="tab" color="primary" direction="vertical" class="elevation-4" style="z-index: 2;" >
           <v-tab value="home" :min-height="80">
             <template #default>
               <div class="d-flex flex-column align-center ga-2" style="width: 60px;">
@@ -34,7 +34,7 @@ provide('alias', alias)
           <v-tab value="profile" :min-height="80">
             <template #default>
               <div class="d-flex flex-column align-center ga-2">
-                <v-icon icon="mdi-account" size="30" />
+                <v-icon icon="mdi-account" size="30"/>
                 <span>个人信息</span>
               </div>
             </template>
@@ -102,7 +102,7 @@ provide('alias', alias)
 <style scoped lang="less">
 .main-content-wrapper {
   position: relative;
-
+  overflow: hidden;
 
 
   .main-area {
