@@ -1,14 +1,20 @@
 <script setup lang="ts">
+import { useLayoutMobile } from '../../hooks/useLayoutMobile';
+
+
+const { isMobile } = useLayoutMobile()
+
 </script>
 
 
 <template>
-  <v-sheet height="100%" style="box-sizing: border-box;overflow-y:auto;" width="750px" class="skill pl-12">
+  <v-sheet height="100%" style="overflow-y:auto;" :width="isMobile ? '100%' : '750px'"
+    class="skill pl-lg-12 pl-4 pr-lg-0 pr-4">
     <h5 class="text-h5">项目经验</h5>
     <v-divider class="my-3"></v-divider>
 
     <div>
-      <v-timeline align="start" side="end">
+      <v-timeline align="start" side="end" class="justify-start">
 
         <v-timeline-item dot-color="blue-lighten-1" size="small">
           <div class="d-flex">
@@ -18,7 +24,7 @@
                 <span class="font-weight-bold">项目描述：</span>
                 <span>低代码工具并结合流程引擎，无需代码创建流程表单</span>
               </p>
-              <p class="text-body-2 text-grey-darken-1 d-flex ga-2 my-2">
+              <p class="text-body-2 text-grey-darken-1 d-flex flex-wrap ga-2 my-2">
                 <v-chip>Vue.js</v-chip>
                 <v-chip>TypeScript</v-chip>
                 <v-chip>Element-Plus</v-chip>
@@ -46,7 +52,7 @@
                 <span class="font-weight-bold">项目描述：</span>
                 <span>大屏编辑器，快速生成Web大屏网页，多种图表在线编辑，可导入多种格式模型。</span>
               </p>
-              <p class="text-body-2 text-grey-darken-1 d-flex ga-2 my-2">
+              <p class="text-body-2 text-grey-darken-1 d-flex flex-wrap ga-2 my-2">
                 <v-chip>Vue.js</v-chip>
                 <v-chip>Three.js</v-chip>
                 <v-chip>Lerna</v-chip>
@@ -75,7 +81,7 @@
                 <span class="font-weight-bold">项目描述：</span>
                 <span>厚展科技数字展厅</span>
               </p>
-              <p class="text-body-2 text-grey-darken-1 d-flex ga-2 my-2">
+              <p class="text-body-2 text-grey-darken-1 flex-wrap d-flex ga-2 my-2">
                 <v-chip>Vue.js3</v-chip>
                 <v-chip>Three.js</v-chip>
                 <v-chip>video.js</v-chip>

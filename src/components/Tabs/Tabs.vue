@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { provide, ref } from 'vue'
-import Home from './Home.vue'
+import Home from '../Panels/Home.vue'
 import PrependInfo from './PrependInfo.vue'
-import Profile from './Profile.vue'
-import Skill from './Skill.vue'
-import JobExperience from './JobExperience.vue'
-import ProjectExperience from './ProjectExperience.vue'
+import Profile from '../Panels/Profile.vue'
+import Skill from '../Panels/Skill.vue'
+import JobExperience from '../Panels/JobExperience.vue'
+import ProjectExperience from '../Panels/ProjectExperience.vue'
 
 
 const tab = ref('home')
 
 const tabWindowTransition = ref(true)
 const tabWindowReverseTransition = ref(true)
-const alias = ref(['前端开发者。', '技术追求者。', '运动爱好者。'])
-provide('alias', alias)
+
 </script>
 
 

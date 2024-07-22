@@ -10,18 +10,7 @@ const render = (canvas) => {
   var mouse = { x: 0, y: 0 };
 
   var numMetaballs = 50;
-  var metaballs = [];
-
-  for (var i = 0; i < numMetaballs; i++) {
-    var radius = Math.random() * 60 + 10;
-    metaballs.push({
-      x: Math.random() * (width - 2 * radius) + radius,
-      y: Math.random() * (height - 2 * radius) + radius,
-      vx: (Math.random() - 0.5) * 3,
-      vy: (Math.random() - 0.5) * 3,
-      r: radius * 0.75
-    });
-  }
+  let metaballs = [];
 
   var vertexShaderSrc = `
 attribute vec2 position;
@@ -36,10 +25,11 @@ gl_Position = vec4(position, 0.0, 1.0);
   var fragmentShaderSrc = `
 precision highp float;
 
-const float WIDTH = ` + (width >> 0) + `.0;
-const float HEIGHT = ` + (height >> 0) + `.0;
-
 uniform vec3 metaballs[` + numMetaballs + `];
+
+uniform float WIDTH;
+uniform float HEIGHT;
+
 
 void main(){
 float x = gl_FragCoord.x;
@@ -64,6 +54,9 @@ gl_FragColor = vec4(1., 1., 1., 1.0);
 }
 
 `;
+
+
+
 
   var vertexShader = compileShader(vertexShaderSrc, gl.VERTEX_SHADER);
   var fragmentShader = compileShader(fragmentShaderSrc, gl.FRAGMENT_SHADER);
@@ -94,11 +87,38 @@ gl_FragColor = vec4(1., 1., 1., 1.0);
     0 // offset into each span of vertex data
   );
 
-  var metaballsHandle = getUniformLocation(program, 'metaballs');
+
+
+  let metaballsHandle = getUniformLocation(program, 'metaballs');
+  let uniformWidth = getUniformLocation(program, 'WIDTH');
+  let uniformHeight = getUniformLocation(program, 'HEIGHT');
+
+  const resizeEffect = () => {
+    width = window.innerWidth * 0.75;
+    height = window.innerHeight * 0.75;
+
+    gl.uniform1f(uniformWidth, width)
+    gl.uniform1f(uniformHeight, height)
+
+    metaballs = []
+    for (var i = 0; i < numMetaballs; i++) {
+      var radius = Math.random() * 60 + 10;
+      metaballs.push({
+        x: Math.random() * (width - 2 * radius) + radius,
+        y: Math.random() * (height - 2 * radius) + radius,
+        vx: (Math.random() - 0.5) * 3,
+        vy: (Math.random() - 0.5) * 3,
+        r: radius * 0.75
+      });
+    }
+  }
+
+  resizeEffect()
 
   let cancelKey
   let stop = () => {
     cancelAnimationFrame(cancelKey)
+    window.removeEventListener('resize', resizeCb)
   }
   loop();
   function loop() {
@@ -121,6 +141,8 @@ gl_FragColor = vec4(1., 1., 1., 1.0);
     }
     gl.uniform3fv(metaballsHandle, dataToSendToGPU);
 
+
+
     //Draw
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
@@ -139,6 +161,8 @@ gl_FragColor = vec4(1., 1., 1., 1.0);
     return shader;
   }
 
+
+
   function getUniformLocation(program, name) {
     var uniformLocation = gl.getUniformLocation(program, name);
     if (uniformLocation === -1) {
@@ -146,6 +170,16 @@ gl_FragColor = vec4(1., 1., 1., 1.0);
     }
     return uniformLocation;
   }
+
+  let timer = null
+  const resizeCb = () => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(resizeEffect, 200)
+
+  }
+  window.addEventListener('resize', resizeCb)
 
   function getAttribLocation(program, name) {
     var attributeLocation = gl.getAttribLocation(program, name);
@@ -171,7 +205,7 @@ onMounted(() => {
   stop = render(canvas.value).stop
 })
 
-onUnmounted(stop)
+onUnmounted(() => stop())
 </script>
 
 
@@ -185,6 +219,7 @@ onUnmounted(stop)
 <style scoped>
 canvas {
   width: 100%;
+  height: 100%;
 }
 
 .container {
@@ -193,5 +228,6 @@ canvas {
   top: 0;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 </style>

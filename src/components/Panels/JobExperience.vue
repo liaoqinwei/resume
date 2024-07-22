@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import { useLayoutMobile } from '../../hooks/useLayoutMobile';
+
+const { isMobile } = useLayoutMobile()
+
 </script>
 
 
 <template>
-  <v-sheet height="100%" width="750px" class="skill pt-16 pl-12">
+  <v-sheet height="100%" :width="isMobile ? '100%' : '750px'" class="skill pt-16 pl-lg-12 pl-4 pr-lg-0 pr-4">
     <h5 class="text-h5">工作经验</h5>
     <v-divider class="my-3"></v-divider>
     <v-timeline align="start" side="end">
 
-      <v-timeline-item dot-color="blue-lighten-1" size="small">
+      <v-timeline-item dot-color="blue-lighten-1" size="small" >
         <div class="d-flex">
           <div>
             <p class="text-h6">前端工程师</p>
