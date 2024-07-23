@@ -96,6 +96,33 @@ const { isMobile } = useLayoutMobile()
           </div>
         </v-timeline-item>
 
+
+        <v-timeline-item dot-color="blue-lighten-1" size="small">
+          <div class="d-flex">
+            <div>
+              <p>
+                <span class="text-h6">多个三维可视化项目 </span>
+                <v-chip class="ml-2" variant="plain" href="https://www.kantu3d.com/demos">链接</v-chip>
+              </p>
+              <p class="my-2 text-subtitle-2">
+                <span class="font-weight-bold">项目描述：</span>
+                <span>一些三维外包项目/deom</span>
+              </p>
+              <p class="text-body-2 text-grey-darken-1 flex-wrap d-flex ga-2 my-2">
+                <v-chip>Vue.js3</v-chip>
+                <v-chip>Three.js</v-chip>
+                <v-chip>Vite</v-chip>
+              </p>
+              <div class="text-body-2">
+                <ul class="project-infos text-grey-darken-1">
+                  <li>使用threejs渲染场景，使用EChart渲染图表信息</li>
+                  <li>制作镜头动画，场景标点，智能报警，视频监控，人员定位等功能</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </v-timeline-item>
+
       </v-timeline>
     </div>
 
