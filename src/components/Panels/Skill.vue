@@ -52,7 +52,7 @@ const { isMobile } = useLayoutMobile()
       <div class="d-flex flex-wrap ga-4">
         <v-btn class="text-none font-weight-bold" flat color="green-lighten-1">Nginx</v-btn>
         <v-btn class="text-none font-weight-bold" flat color="green-lighten-1">Node.js</v-btn>
-        <v-btn class="text-none font-weight-bold" flat color="green-lighten-1">Node.js</v-btn>
+        <v-btn class="text-none font-weight-bold" flat color="green-lighten-1">Prisma</v-btn>
         <v-btn class="text-none font-weight-bold" flat color="blue-darken-2">PM2</v-btn>
         <v-btn class="text-none font-weight-bold" flat color="light-blue-accent-3">SQL</v-btn>
         <v-btn class="text-none font-weight-bold" flat color="grey-darken-2">Koa</v-btn>
