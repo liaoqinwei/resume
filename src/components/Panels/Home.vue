@@ -18,8 +18,7 @@ const { isMobile } = useLayoutMobile()
       <p class="text-body-1" style="font-size: 14px;">你好，我是一名<b>
           <TextTransition :list="alias"></TextTransition>
         </b>|</p>
-      <p class="mx-30 mt-4 ma-xs-auto" style="font-size: 20px;">主攻前端方向，4年前端开发经验，热衷技术。配合团队利用最新的技术解决业务问题，
-        项目包括 Vue/Mobile/后台管理/3d数字孪生/微信小程序，了解后端，能够独立开发。</p>
+      <p class="mx-30 mt-4 ma-xs-auto" style="font-size: 20px;">我专注于前端开发，拥有4年的经验，热衷于技术探索和源码阅读。擅长利用最新技术高效解决业务问题，曾参与多个项目的开发，包括 Vue 框架、移动端应用、后台管理系统、3D 数字孪生、微信小程序等。具备后端开发基础，能够独立完成项目并与团队紧密合作。</p>
 
       <div class="d-flex ga-lg-8 ga-md-4 ga-3 mt-4">
         <v-btn prepend-icon="mdi-language-c" href="https://blog.csdn.net/weixin_45412353">
